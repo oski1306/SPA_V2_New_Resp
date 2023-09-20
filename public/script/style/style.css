@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+}
+.topBar{
+    background-color: aqua;
+}
+.logo{
+    color: darkgray;
+    text-align: center;
+    font-size: 50px;
+}
+form{
+    text-align: center;
+}
+.LoginTitle{
+    text-align: center;
+}
+.Login{
+    text-align: center;
+}
+.loginBtn{
+    font-size: 35px;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.registerBtn{
+    font-size: 35px;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.backBtn{
+    margin-left: 10px;
+    font-size: 35px;
+    background-color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+}
