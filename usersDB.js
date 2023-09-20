@@ -8,7 +8,7 @@ const client = new Client({
     database: "spaV2"
 });
 
-client.connect();
+
 
 client.query(`Select * from users`, (err,res)=>{
     if(!err){
@@ -18,3 +18,5 @@ client.query(`Select * from users`, (err,res)=>{
     }
     client.end;
 })
+
+module.exports = client;

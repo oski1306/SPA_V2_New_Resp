@@ -7,13 +7,19 @@ export default class extends AbstractView{
     async getPage(){
         return `
         <a href='/' class="backBtn" data-link> ← </a>
-        <form>
-          <label for="email">E-Mail:</label><br>
-          <input type="text" id="email" name="email"><br>
-          <label for="uname">Username:</label><br>
-          <input type="text" id="uname" name="uname"><br>
-          <label for="password">Password:</label><br>
-          <input type="text" id="password" name="password">
+        <h2 class="registerTxt">Register New User:</h2>
+        <br>
+        <form action="/registerForm" method="POST">
+          <label for="email"> Email: </label>
+          <input type="email" id="email" name="email" required>
+          <br>
+          <label for="username"> Username </label>
+          <input type="text" id="username" name="username" required>
+          <br>
+          <label for="password"> Password: </label>
+          <input type="password" id="password" name="password" required>
+          <br>
+          <input type="submit" value="Register">        
         </form>
     `;
     }
