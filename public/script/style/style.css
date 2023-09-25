@@ -43,3 +43,9 @@ form{
 .registerTxt{
     text-align: center;
 }
+.container{
+    text-align: center;
+}
+body{
+    background-color: lightgrey;
+}

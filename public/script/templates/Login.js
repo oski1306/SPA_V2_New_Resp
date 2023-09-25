@@ -9,10 +9,10 @@ export default class extends AbstractView{
         <h2 class="LoginTitle"> Log In Or Register New User</h2>
         <br>
         <div class="Login">
-          <a href='/loginForm' class="loginBtn" data-link> Log In </a>
+          <a href='/loginform' class="loginBtn" data-link> Log In </a>
           <br>
           <br>
-          <a href='/registerForm' class="registerBtn" data-link> Register </a>
+          <a href='/registerform' class="registerBtn" data-link> Register </a>
         </div>
     `;
     }

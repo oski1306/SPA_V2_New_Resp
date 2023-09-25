@@ -1,6 +1,7 @@
 import Login from "./templates/Login.js";
 import LoginForm from "./templates/LoginForm.js";
 import RegisterForm from "./templates/RegisterForm.js";
+import mainView from "./templates/mainView.js";
 
 const redirect = url =>{
     history.pushState(null,null,url);
@@ -13,12 +14,16 @@ const router = async()=>{
             view: Login
         },
         {
-            path: '/loginForm',
+            path: '/loginform',
             view: LoginForm
         },
         {
-            path: '/registerForm',
+            path: '/registerform',
             view: RegisterForm
+        },
+        {
+            path:'/mainview',
+            view: mainView
         }
 
     ];
