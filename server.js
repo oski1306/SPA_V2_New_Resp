@@ -1,7 +1,7 @@
 const express = require('express');
 const server = express();
 const path = require('path');
-const {dbConnect, registerUser} = require('./usersDB.js')
+const {dbConnect, registerUser, loginUser} = require('./usersDB.js');
 
 server.use(express.urlencoded({extended : true}));
 
@@ -18,12 +18,27 @@ server.post('/api/registerform', async (req,res) =>{
 
     await dbConnect();
 
-    await registerUser(username, email, password)
+    await registerUser(username, email, password);
 
     res.redirect('/loginform')
-})
+});
+
+server.post('/api/loginform', async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    await dbConnect();
+
+    const loginSuccess = await loginUser(username, password);
+
+    if (loginSuccess){
+        res.redirect('/mainview');
+    } else {
+        res.redirect('/');
+    };
+});
 
 server.listen(8080, ()  => {
     console.log('Server is running on port 8080');
-})
+});
 
