@@ -18,9 +18,15 @@ server.post('/api/registerform', async (req,res) =>{
 
     await dbConnect();
 
-    await registerUser(username, email, password);
+    const regSuccess = await registerUser(username, email, password);
 
-    res.redirect('/loginform')
+    if(regSuccess){
+        res.redirect('/loginform')
+    } else {
+        res.redirect('/registerfailed')
+    }
+
+    
 });
 
 server.post('/api/loginform', async (req, res) => {
@@ -34,7 +40,7 @@ server.post('/api/loginform', async (req, res) => {
     if (loginSuccess){
         res.redirect('/mainview');
     } else {
-        res.redirect('/');
+        res.redirect('/loginfailed');
     };
 });
 

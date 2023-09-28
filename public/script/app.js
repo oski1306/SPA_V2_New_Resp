@@ -2,6 +2,8 @@ import Login from "./templates/Login.js";
 import LoginForm from "./templates/LoginForm.js";
 import RegisterForm from "./templates/RegisterForm.js";
 import mainView from "./templates/mainView.js";
+import RegisterFailed from "./templates/RegisterFailed.js";
+import LoginFailed from "./templates/LoginFailed.js";
 
 const redirect = url =>{
     history.pushState(null,null,url);
@@ -24,6 +26,14 @@ const router = async()=>{
         {
             path:'/mainview',
             view: mainView
+        },
+        {
+            path:'/registerfailed',
+            view: RegisterFailed
+        },
+        {
+            path: '/loginfailed',
+            view: LoginFailed
         }
 
     ];

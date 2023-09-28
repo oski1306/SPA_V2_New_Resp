@@ -25,9 +25,14 @@ async function registerUser(username, email, password){
         `;
         await client.query(query, [username, email, password]);
         console.log("Registration Successfull!");
+
+        return true;
+
     } catch(error){
         console.error("User not registered:", error.message)
         console.log('Registration Failed!');
+
+        return false;
     }
 }
 

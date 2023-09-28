@@ -49,3 +49,9 @@ form{
 body{
     background-color: lightgrey;
 }
+.regFail{
+    text-align: center;
+}
+.loginFail{
+    text-align: center;
+}
