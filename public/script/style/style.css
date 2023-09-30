@@ -55,3 +55,7 @@ body{
 .loginFail{
     text-align: center;
 }
+.logOut{
+    text-align: right;
+    margin-right: 100px;
+}
