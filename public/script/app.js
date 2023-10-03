@@ -62,6 +62,29 @@ window.addEventListener('DOMContentLoaded', ()=>{
             e.preventDefault();
             redirect(e.target.href);
         }
-    })
+    });
+
+document.querySelector('#app').addEventListener('click', (e)  => {
+    if (e.target.id === 'addTaskButton'){
+        e.preventDefault();
+        addTask();
+    }
+})
     router();
 })
+
+function addTask() {
+    const taskInp = document.querySelector('#toDoInp');
+    const taskTxt = taskInp.value.trim();
+
+    if (taskTxt !== '') {
+
+        const taskContainer = document.createElement('div');
+        taskContainer.textContent = taskTxt;
+
+        const taskDiv = document.querySelector('#taskDiv');
+        taskDiv.appendChild(taskContainer);
+
+        taskInp.value = '';
+    }
+}
