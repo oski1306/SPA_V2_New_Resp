@@ -53,7 +53,27 @@ const router = async()=>{
 
     const view = new match.route.view();
     document.querySelector('#app').innerHTML = await view.getPage();
+    if (location.pathname === '/mainview') {
+        await viewTasks();
+    }
 
+};
+
+async function viewTasks() {
+    const response = await fetch('/api/gettasks');
+    if (response.ok) {
+        const toDoTasks = await response.json();
+        const taskDiv = document.querySelector('#taskDiv');
+        taskDiv.innerHTML = '';
+
+        toDoTasks.forEach((task) => {
+            const taskContainer = document.createElement('div');
+            taskContainer.textContent = task.tasks;
+            taskDiv.appendChild(taskContainer);
+        });
+    } else {
+        console.error('Failed to fetch tasks!');
+    };
 };
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -64,27 +84,29 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     });
 
-document.querySelector('#app').addEventListener('click', (e)  => {
+document.querySelector('#app').addEventListener('click', async (e)  => {
     if (e.target.id === 'addTaskButton'){
         e.preventDefault();
-        addTask();
-    }
-})
+        const taskInp = document.querySelector('#toDoInp');
+        const taskTxt = taskInp.value.trim();
+
+        if (taskTxt !== '') {
+            const response = await fetch('/api/addtask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json',
+                },
+                body: JSON.stringify({taskTxt}),
+            });
+            if (response.ok) {
+                console.log('Task Added Successfully!');
+                window.location.reload();
+            } else {
+                console.error('Failed to add task!');
+            };
+            taskInp.value = '';
+        };
+    };
+});
     router();
 })
-
-function addTask() {
-    const taskInp = document.querySelector('#toDoInp');
-    const taskTxt = taskInp.value.trim();
-
-    if (taskTxt !== '') {
-
-        const taskContainer = document.createElement('div');
-        taskContainer.textContent = taskTxt;
-
-        const taskDiv = document.querySelector('#taskDiv');
-        taskDiv.appendChild(taskContainer);
-
-        taskInp.value = '';
-    }
-}

@@ -55,9 +55,45 @@ async function loginUser(username,password){
     }
 }
 
+async function addTask(username, taskTxt) {
+    try {
+        const query = `
+        INSERT INTO tasks (user_id, tasks)
+        VALUES (
+            (SELECT user_id FROM users WHERE username = $1),
+            $2
+        )
+        `;
+        await client.query(query, [username, taskTxt]);
+        console.log('Task added successfully');
+        return true;
+    } catch (error) {
+        console.error('Failed to add task: ', error.message);
+        return false;
+    }
+}
+
+async function displayTasks(username) {
+    try {
+        await dbConnect();
+
+        const query = `
+            SELECT tasks FROM tasks
+            WHERE user_id = (SELECT user_id FROM users WHERE username = $1)
+        `;
+        const result = await client.query(query, [username]);
+        return result.rows;
+    } catch (error) {
+        console.error('Failed to fetch tasks:', error.message);
+        throw error;
+    }
+}
+
 module.exports = {
     dbConnect,
     registerUser,
     loginUser,
+    addTask,
+    displayTasks,
     getClient : () => client,
 }
