@@ -17,5 +17,6 @@
     "Regfail" : "Username or Password Already in Use!",
     "Regfail2" : "Log In Or Register New User",
     "Regfail3" : "Log In", 
-    "Regfail4" : "Register"
+    "Regfail4" : "Register",
+    "LogOut" : "Logout"
 }

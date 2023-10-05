@@ -7,7 +7,7 @@ export default class extends AbstractView{
     async getPage(){
         return `
         <form class="logOut" action="/api/logout" method="post">
-              <button type="submit">Logout</button>
+              <button type="submit" translateKey= "LogOut">Logout</button>
         </form>
         <div id="taskInpDiv">
               <p id="add" translateKey= "AddTask">Add Task</p>

@@ -17,6 +17,6 @@
     "Regfail" : "Brukernavn Eller Passord Allerede i Bruk!",
     "Regfail2" : "Log Inn Eller Register Ny Bruker",
     "Regfail3" : "Log Inn", 
-    "Regfail4" : "Registrer Bruker"
-
+    "Regfail4" : "Registrer Bruker",
+    "LogOut" : "Log Ut"
 }

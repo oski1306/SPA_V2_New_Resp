@@ -69,6 +69,7 @@ async function viewTasks() {
         toDoTasks.forEach((task) => {
             const taskContainer = document.createElement('div');
             taskContainer.textContent = task.tasks;
+            taskContainer.className = 'bordered-task-container';
 
             const delBtn = document.createElement('button');
             delBtn.textContent = '✔';
