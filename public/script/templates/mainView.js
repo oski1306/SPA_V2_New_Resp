@@ -9,11 +9,13 @@ export default class extends AbstractView{
         <form class="logOut" action="/api/logout" method="post">
               <button type="submit">Logout</button>
         </form>
-        <div>
-              <p id="add">Add Task</p>
+        <div id="taskInpDiv">
+              <p id="add" translateKey= "AddTask">Add Task</p>
+              <br>
               <input type="text" id="toDoInp" name="task" required>
-              <button id="addTaskButton">Add Task</button>
+              <button id="addTaskButton" translateKey ="AddTask">Add Task</button>
         </div>
+        <br>
         <div id="taskDiv"></div>
     `;
     }

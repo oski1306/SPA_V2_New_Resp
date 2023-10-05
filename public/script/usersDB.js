@@ -75,10 +75,8 @@ async function addTask(username, taskTxt) {
 
 async function displayTasks(username) {
     try {
-        await dbConnect();
-
         const query = `
-            SELECT tasks FROM tasks
+            SELECT task_list_id, tasks FROM tasks
             WHERE user_id = (SELECT user_id FROM users WHERE username = $1)
         `;
         const result = await client.query(query, [username]);
@@ -89,11 +87,28 @@ async function displayTasks(username) {
     }
 }
 
+async function deleteTask(username, taskListId) {
+    try {
+        const query = `
+        DELETE FROM tasks
+        WHERE user_id = (SELECT user_id FROM users WHERE username = $1)
+        AND task_list_id = $2
+        `;
+        await client.query(query, [username, taskListId]);
+        console.log('Task Deleted!');
+        return true;
+    } catch (error) {
+        console.error('Failed to delete task: ', error.message);
+        return false;
+    }
+}
+
 module.exports = {
     dbConnect,
     registerUser,
     loginUser,
     addTask,
     displayTasks,
+    deleteTask,
     getClient : () => client,
 }

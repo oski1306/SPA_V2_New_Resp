@@ -69,6 +69,13 @@ async function viewTasks() {
         toDoTasks.forEach((task) => {
             const taskContainer = document.createElement('div');
             taskContainer.textContent = task.tasks;
+
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '✔';
+            delBtn.className = 'delete-task-button';
+            delBtn.dataset.taskListId = task.task_list_id;
+
+            taskContainer.appendChild(delBtn);
             taskDiv.appendChild(taskContainer);
         });
     } else {
@@ -107,6 +114,67 @@ document.querySelector('#app').addEventListener('click', async (e)  => {
             taskInp.value = '';
         };
     };
+    if (e.target.classList.contains('delete-task-button')) {
+        const taskListId = e.target.dataset.taskListId;
+        const response = await fetch(`/api/deletetask/${taskListId}`, {
+            method : 'DELETE',
+        });
+        if (response.ok) {
+            console.log('Task Deleted!');
+            window.location.reload();
+        } else {
+            console.error('Failed to delete task!')
+        }
+    }
 });
     router();
 })
+
+//// Translate Module\\\\
+
+const defLocalization = "en";
+
+
+let localization;
+
+let translate = {};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    setLocale(defLocalization);
+    langSwitcher(defLocalization);
+});
+
+function langSwitcher(initialValue){
+    const switcher = 
+    document.querySelector("[changeLanguage]");
+    switcher.value = initialValue;
+    switcher.onchange = (e) => {
+        setLocale(e.target.value);
+    }
+}
+
+async function setLocale(newLocalization){
+    if (newLocalization=== localization) return;
+    const newTranslate =
+     await fetchTranslateFor(newLocalization);
+    localization = newLocalization;
+    translate = newTranslate;
+    translatePage();
+}
+
+async function fetchTranslateFor(newLocalization){
+    const response = await fetch("./script/lang/" + newLocalization + ".json");
+    return await response.json();
+}
+
+function translatePage(){
+    document
+    .querySelectorAll("[translateKey]")
+    .forEach(translateTxt);
+}
+
+function translateTxt(word){
+    const key = word.getAttribute("translateKey");
+    const translation = translate[key];
+    word.innerText = translation;
+};

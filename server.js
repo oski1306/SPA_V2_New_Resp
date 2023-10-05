@@ -1,7 +1,7 @@
 const express = require('express');
 const server = express();
 const path = require('path');
-const {dbConnect, registerUser, loginUser, addTask, displayTasks} = require('./public/script/usersDB.js');
+const {dbConnect, registerUser, loginUser, addTask, displayTasks, deleteTask} = require('./public/script/usersDB.js');
 const {authorization, authorizedUser} = require('./public/script/authorization.js');
 
 server.use(express.urlencoded({extended : true}));
@@ -85,6 +85,24 @@ server.post('/api/addtask', authorization, async (req, res) => {
         console.error('Failed to add task:', error.message);
         
         res.status(500).json({ error: 'Failed to add task' });
+    }
+});
+
+server.delete('/api/deletetask/:taskListId', authorization, async (req, res) => {
+    const sessionID = req.sessionID;
+    const username = authorizedUser[sessionID].username;
+    const taskListId = req.params.taskListId;
+
+    try{
+        const taskDeleted = await deleteTask(username, taskListId);
+        if (taskDeleted) {
+            res.status(200).json({message : 'Task Deleted!'});
+        } else {
+            res.status(500).json({error: 'Failed To Delete Task'});
+        }
+    } catch (error) {
+        console.error('Failed To Delete Task: ', error.message);
+        res.status(500).json({error: 'Failed To Delete Task'})
     }
 });
 

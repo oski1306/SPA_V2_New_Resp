@@ -1,0 +1,22 @@
+{
+    "translateSite" : "Velg Språk",
+    "uName" : "Brukernavn",
+    "Password" : "Passord",
+    "Homepage" : "Log Inn Eller Registrer Ny Bruker",
+    "HomepageLogin" : "Log Inn",
+    "HomepageRegister": "Registrer Bruker",
+    "Register" : "Registrer Ny Bruker:",
+    "RegisterUname" : "Brukernavn",
+    "RegisterEmail" : "Email",
+    "RegisterPassword" : "Passord",
+    "AddTask" : "Legg til en oppgave",
+    "LogInFail" : "Feil Passord Eller Brukernavn!",
+    "LogInFail2" : "Log Inn Eller Register Ny Bruker",
+    "LogInFail3" : "Log Inn",
+    "LogInFail4" : "Registrer Bruker",
+    "Regfail" : "Brukernavn Eller Passord Allerede i Bruk!",
+    "Regfail2" : "Log Inn Eller Register Ny Bruker",
+    "Regfail3" : "Log Inn", 
+    "Regfail4" : "Registrer Bruker"
+
+}

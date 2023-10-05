@@ -1,0 +1,21 @@
+{
+    "translateSite" : "Choose Language",
+    "uName" : "Username:",
+    "Password" : "Password",
+    "Homepage" : "Log In Or Register New User",
+    "HomepageLogin" : "Log In",
+    "HomepageRegister": "Register",
+    "Register" : "Registrer New User:",
+    "RegisterUname" : "Username",
+    "RegisterEmail" : "Email",
+    "RegisterPassword" : "Password",
+    "AddTask" : "Add Task ",
+    "LogInFail" : "Username or Password Incorrect!",
+    "LogInFail2" : "Log In Or Register New User",
+    "LogInFail3" : "Log In",
+    "LogInFail4" : "Register",
+    "Regfail" : "Username or Password Already in Use!",
+    "Regfail2" : "Log In Or Register New User",
+    "Regfail3" : "Log In", 
+    "Regfail4" : "Register"
+}

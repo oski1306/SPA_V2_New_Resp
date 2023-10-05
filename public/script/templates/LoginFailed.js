@@ -6,15 +6,15 @@ export default class extends AbstractView{
     }
     async getPage(){
         return `
-        <p class="loginFail">Username or Password Incorrect!</p>
+        <p class="loginFail" translateKey= "LogInFail">Username or Password Incorrect!</p>
         <br>
-        <h2 class="LoginTitle"> Log In Or Register New User</h2>
+        <h2 class="LoginTitle" translateKey= "LogInFail2"> Log In Or Register New User</h2>
         <br>
         <div class="Login">
-          <a href='/loginform' class="loginBtn" data-link> Log In </a>
+          <a href='/loginform' class="loginBtn" data-link translateKey= "LogInFail3"> Log In </a>
           <br>
           <br>
-          <a href='/registerform' class="registerBtn" data-link> Register </a>
+          <a href='/registerform' class="registerBtn" data-link translateKey= "LogInFail4"> Register </a>
         </div>
     `;
     }
