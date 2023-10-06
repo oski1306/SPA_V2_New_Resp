@@ -1,11 +1,11 @@
 const {Client} = require('pg');
 
 const client = new Client({
-    host: "dpg-ckfupeol3its73ab0klg-a.frankfurt-postgres.render.com",
-    user: "oskar",
-    port: 5432,
-    password: "uoknSYD3SkF5ijlUHW0bsMAsRraOlqOt",
-    database: "spav2_fn9h",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    port: process.env.DB_PORT,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     ssl : {
         rejectUnauthorized: false
     }
