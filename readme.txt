@@ -29,3 +29,6 @@ CREATE TABLE tasks (
     tasks VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+
+It may take some time for the application to load when accessing it online. 
