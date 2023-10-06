@@ -1,11 +1,14 @@
 const {Client} = require('pg');
 
 const client = new Client({
-    host: "localhost",
-    user: "postgres",
+    host: "dpg-ckfupeol3its73ab0klg-a.frankfurt-postgres.render.com",
+    user: "oskar",
     port: 5432,
-    password: "root",
-    database: "spaV2"
+    password: "uoknSYD3SkF5ijlUHW0bsMAsRraOlqOt",
+    database: "spav2_fn9h",
+    ssl : {
+        rejectUnauthorized: false
+    }
 });
 
 async function dbConnect(){
