@@ -20,7 +20,8 @@ CREATE TABLE users (
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
     username character varying(255) COLLATE pg_catalog."default" NOT NULL,
     password character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT test UNIQUE (email, username)
+    CONSTRAINT users_email_key UNIQUE (email),
+    CONSTRAINT users_username_key UNIQUE (username)
 );
 
 CREATE TABLE tasks (
